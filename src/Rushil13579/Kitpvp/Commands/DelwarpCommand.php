@@ -25,7 +25,7 @@ class DelwarpCommand extends Command {
 
   public function execute(CommandSender $s, string $commandLabel, array $args){
     if($s instanceof Player){
-      if(!$s->testPermission()){
+      if(!$s->hasPermission('kitpvp.command.delwarp')){
         $s->sendMessage('§cYou do not have permission to use this command');
         return true;
       }

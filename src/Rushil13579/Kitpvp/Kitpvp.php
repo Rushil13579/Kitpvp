@@ -144,47 +144,36 @@ class Kitpvp extends PluginBase implements Listener {
 
       case EntityDamageEvent::CAUSE_ENTITY_ATTACK:
         return $this->cfg->get('kill-death-msg');
-      break;
 
       case EntityDamageEvent::CAUSE_PROJECTILE:
         return $this->cfg->get('projectile-death-msg');
-      break;
 
       case EntityDamageEvent::CAUSE_SUFFOCATION:
         return $this->cfg->get('suffocation-death-msg');
-      break;
 
       case EntityDamageEvent::CAUSE_FALL:
         return $this->cfg->get('fall-death-msg');
-      break;
 
-      case EntityDamageEvent::CAUSE_FIRE || EntityDamageEvent::CAUSE_FIRE_TICK:
+      case EntityDamageEvent::CAUSE_FIRE or EntityDamageEvent::CAUSE_FIRE_TICK:
         return $this->cfg->get('fire-death-msg');
-      break;
 
       case EntityDamageEvent::CAUSE_LAVA:
         return $this->cfg->get('lava-death-msg');
-      break;
 
       case EntityDamageEvent::CAUSE_DROWNING:
         return $this->cfg->get('drown-death-msg');
-      break;
 
       case EntityDamageEvent::CAUSE_ENTITY_EXPLOSION or EntityDamageEvent::CAUSE_BLOCK_EXPLOSION:
         return $this->cfg->get('explosion-death-msg');
-      break;
 
       case EntityDamageEvent::CAUSE_VOID:
         return $this->cfg->get('void-death-msg');
-      break;
 
       case EntityDamageEvent::CAUSE_SUICIDE:
         return $this->cfg->get('suicide-death-msg');
-      break;
 
       case EntityDamageEvent::CAUSE_MAGIC:
         return $this->cfg->get('magic-death-msg');
-      break;
     }
   }
 

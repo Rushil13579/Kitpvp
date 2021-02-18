@@ -54,20 +54,21 @@ class EventListener implements Listener {
     $lastdmg = $p->getLastDamageCause();
 
     $msg = $this->plugin->deathMessage($lastdmg);
-
-    if($lastdmg->getCause() === EntityDamageEvent::CAUSE_ENTITY_ATTACK or $lastdmg->getCause() === EntityDamageEvent::CAUSE_PROJECTILE){
-      $damager = $lastdmg->getDamager();
-      if($damager instanceof Living){
-        $msg = str_replace(['{player}', '{killer}', '{health}', '{maxhealth}'], [$p->getName(), $damager->getName(), $damager->getHealth(), $damager->getMaxHealth()], $msg);
-        if($damager instanceof Player){
-          $this->plugin->addKill($damager);
-          $this->plugin->addDeath($p);
+    if($e instanceof EntityDamageByEntityEvent){
+      if($lastdmg->getCause() === EntityDamageEvent::CAUSE_ENTITY_ATTACK or $lastdmg->getCause() === EntityDamageEvent::CAUSE_PROJECTILE){
+        $damager = $lastdmg->getDamager();
+        if($damager instanceof Living){
+          $msg = str_replace(['{player}', '{killer}', '{health}', '{maxhealth}'], [$p->getName(), $damager->getName(), $damager->getHealth(), $damager->getMaxHealth()], $msg);
+          if($damager instanceof Player){
+            $this->plugin->addKill($damager);
+            $this->plugin->addDeath($p);
+          }
+        } else {
+          $msg = $this->plugin->cfg->get('default-death-msg');
         }
       } else {
-        $msg = $this->plugin->cfg->get('default-death-msg');
+        $msg = str_replace('{player}', $p->getName(), $msg);
       }
-    } else {
-      $msg = str_replace('{player}', $p->getName(), $msg);
     }
 
     $e->setDeathMessage($msg);
