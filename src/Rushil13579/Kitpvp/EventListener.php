@@ -54,7 +54,6 @@ class EventListener implements Listener {
     $lastdmg = $p->getLastDamageCause();
 
     $msg = $this->plugin->deathMessage($lastdmg);
-    if($e instanceof EntityDamageByEntityEvent){
       if($lastdmg->getCause() === EntityDamageEvent::CAUSE_ENTITY_ATTACK or $lastdmg->getCause() === EntityDamageEvent::CAUSE_PROJECTILE){
         $damager = $lastdmg->getDamager();
         if($damager instanceof Living){
@@ -69,7 +68,6 @@ class EventListener implements Listener {
       } else {
         $msg = str_replace('{player}', $p->getName(), $msg);
       }
-    }
 
     $e->setDeathMessage($msg);
   }
