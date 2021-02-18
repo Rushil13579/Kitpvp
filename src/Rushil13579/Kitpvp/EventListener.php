@@ -52,9 +52,9 @@ class EventListener implements Listener {
   public function onDeath(PlayerDeathEvent $e){
     $p = $e->getPlayer();
     $lastdmg = $p->getLastDamageCause();
-    if($lastdmg instanceof EntityDamageByEntityEvent){
     $msg = $this->plugin->deathMessage($lastdmg);
-      if($lastdmg->getCause() === EntityDamageEvent::CAUSE_ENTITY_ATTACK or $lastdmg->getCause() === EntityDamageEvent::CAUSE_PROJECTILE){
+    if($lastdmg->getCause() === EntityDamageEvent::CAUSE_ENTITY_ATTACK or $lastdmg->getCause() === EntityDamageEvent::CAUSE_PROJECTILE){
+      if($lastdmg instanceof EntityDamageByEntityEvent){
         $damager = $lastdmg->getDamager();
         if($damager instanceof Living){
           $msg = str_replace(['{player}', '{killer}', '{health}', '{maxhealth}'], [$p->getName(), $damager->getName(), $damager->getHealth(), $damager->getMaxHealth()], $msg);
@@ -65,9 +65,9 @@ class EventListener implements Listener {
         } else {
           $msg = $this->plugin->cfg->get('default-death-msg');
         }
-      } else {
-        $msg = str_replace('{player}', $p->getName(), $msg);
       }
+    } else {
+      $msg = str_replace('{player}', $p->getName(), $msg);
     }
 
     $e->setDeathMessage($msg);
