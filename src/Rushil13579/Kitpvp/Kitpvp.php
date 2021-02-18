@@ -33,6 +33,9 @@ class Kitpvp extends PluginBase implements Listener {
   public $effects = [];
   public $commands = [];
 
+  private $cfg;
+  private $kits;
+
   public function onEnable(){
     $this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
 
