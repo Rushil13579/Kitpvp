@@ -1,0 +1,10 @@
+name: Kitpvp
+main: Rushil13579\Kitpvp\Kitpvp
+api: 3.0.0
+version: 1.0
+
+permissions:
+  kitpvp.command.addwarp:
+    description: Allows a player to create|add a warp
+  kitpvp.command.delwarp:
+    description: Allows a player to remove|delete a warp

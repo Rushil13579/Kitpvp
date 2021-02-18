@@ -1,0 +1,106 @@
+# Configuration file for Kitpvp by Rushil13579
+
+# Use '§' for color
+
+# Version, Do not change
+
+version: 1.0
+
+# Set this to true, if you wish to enable warps. Set to false, if you wish to disable it.
+warps-enabled: true
+
+# Set this to true, if you wish to enable score tag. Set to false, if you wish to disable it.
+score-tag-enabled: true
+
+# Only change if health-tag is set to true [Use {health} for the current health of the player & {ping} for the current ping of the player]
+score-tag-format: "§c{health}♥ §f| §c{ping}ms"
+
+# Set this to true, if you wish to enable cps popup. Set to false, if you wish to disable it.
+cps-popup-enabled: true
+
+# Only change if cps-popup is set to true [Use {cps} for the current cps]
+cps-format: "§9CPS: §b{cps}"
+
+# Format for the /stats command [Use {kills} for kills & {deaths} for the deaths]
+self-stats-format: "§3=== §bStats §3===\n§6Kills: §e{kills}\n§6Deaths: §e{deaths}"
+
+# Format for the /stats (ign) command [Use {player} for target player, {kills} for kills & {deaths} for the deaths]
+other-stats-format: "§3=== §bStats §3===\n§6Target: §e{player}\n§6Kills: §e{kills}\n§6Deaths: §e{deaths}"
+
+# Worlds in which hunger is disabled
+no-hunger-worlds:
+  - world1
+  - world2
+
+# Worlds in which fall damage is disabled
+no-fall-dmg-worlds:
+  - world1
+  - world2
+
+# Worlds in which void damage is disabled
+no-void-dmg-worlds:
+  - world1
+  - world2
+
+# Worlds in which block break is disabled
+no-block-break-worlds:
+  - world1
+  - world2
+
+# Worlds in which block place is disabled
+no-block-place-worlds:
+  - world1
+  - world2
+
+# ========== EVENT MESSAGES ==========
+
+# VARIABLES:
+# {player} -> Name of the player involved in the action
+# {killer} -> Name of the player who is responsible for the death of an entity
+# {health} -> Health of the killer when he killed an entity
+# {maxhealth} -> MaxHealth of the killer when he killed an entity
+
+# Message sent when the command executer isn't a player
+not-player-msg: "§cPlease use this command in-game"
+
+# Message sent when a player joins the game
+join-msg: "§a+ [{player}]"
+
+# Message sent when a player quits the game
+quit-msg: "§c- [{player}]"
+
+# Message sent when the cause of death isnt found
+default-death-msg: "§c{player} died"
+
+# Message sent when the cause of death is a player killing another player
+kill-death-msg: "§e{player} §chas been slain by §e{killer} §c[{health}/{maxhealth}]"
+
+# Message sent when the cause of death is a projectile killing a player
+projectile-death-msg: "§e{player} §chas been shot by §e{killer} §c[{health}/{maxhealth}]"
+
+# Message sent when the cause of death is suffocation damage
+suffocation-death-msg: "§e{player} §chas suffocated"
+
+# Message sent when the cause of death is fall damage
+fall-death-msg: "§e{player} §cfell to their death"
+
+# Message sent when the cause of death is fire damage
+fire-death-msg: "§e{player} §chas burnt to crisp"
+
+# Message sent when the cause of death is lava damage
+lava-death-msg: "§e{player} §ctried to swim in lava"
+
+# Message sent when the cause of death is drowning damage
+drown-death-msg: "§e{player} §cdrowned"
+
+# Message sent when the cause of death is explosion damage
+explosion-death-msg: "§e{player} §cblew up"
+
+# Message sent when the cause of death is void damage
+void-death-msg: "§e{player} §cfell in the void"
+
+# Message sent when the cause of death is suicide
+suicide-death-msg: "§e{player} §ccommited suicide"
+
+# Message sent when the cause of death is magic damage
+magic-death-msg: "§e{player} §cdied by magic"

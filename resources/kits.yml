@@ -1,0 +1,53 @@
+# Kit Configuration file for Kitpvp by Rushil13579
+
+# Use '§' for color
+
+# Set this to true to enable kits, and false to disable kits
+kits-enabled: true
+
+# Set to true to enable a form support for kits, and set to false to disable. [Only set to true if FormAPI is installed]
+kit-form-support: true
+
+# Title of the kit form [Only change if kit-form-support is set to true]
+kit-form-title: "§b=== §3Kits §b ==="
+
+# kits:
+# 1st_kitname:
+#   items:
+#     - "Id:meta:amount:name:enchantment1:level1:enchantment2:level2...." [Only id:meta:amount are compulsory. Set name as DEFAULT for no custom name]
+#     - "310:0:1:DiaHelmet:Protection:1:Unbreaking:10"
+#     - "DIAMOND_CHESTPLATE:0:1:DEFAULT:Unbreaking:10:Protection:2"
+#   effects:
+#     - "effect:duration(in seconds):amplifier"
+#     - "SPEED:60:1"
+#     - "Regeneration:120:2"
+#   commands:
+#     - "give {player} 1 10" [Use {player} for the player claiming the kit]
+#     - "say Enjoy!"
+#
+#   form-name-format: "1st_kitname" # Name of the kit in the form [Only matter if kit-form-support is set to true]
+
+kits:
+  testkit:
+    items:
+      - "322:0:8:§cHealer"
+      - "LEATHER_CHESTPLATE:0:1:DEFAULT:Protection:1:Unbreaking:1"
+    effects: # You can disable an option like this
+    commands:
+      - "msg {player} You have claimed kit testkit"
+
+    form-name-format: "§bTestKit"
+
+  pvp:
+    items:
+      - "STONE_SWORD:0:1"
+      - "LEATHER_HELMET:0:1"
+      - "LEATHER_CHESTPLATE:0:1"
+      - "LEATHER_LEGGINGS:0:1"
+      - "LEATHER_BOOTS:0:1"
+    effects:
+      - "SPEED:300:1"
+    commands:
+      - "msg {player} You have claimed kit pvp"
+
+    form-name-format: "§cPVP"
