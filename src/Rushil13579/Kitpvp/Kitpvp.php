@@ -20,6 +20,7 @@ use Rushil13579\Kitpvp\Commands\{KitCommand, KitsCommand};
 use Rushil13579\Kitpvp\Commands\{WarpCommand, WarpsCommand, AddwarpCommand, DelwarpCommand};
 use Rushil13579\Kitpvp\Commands\StatsCommand;
 use jojoe77777\FormAPI\SimpleForm;
+use onebone\economyapi\EconomyAPI;
 
 use pocketmine\utils\Config;
 
@@ -32,9 +33,11 @@ class Kitpvp extends PluginBase implements Listener {
   public $items = [];
   public $effects = [];
   public $commands = [];
+  public $cooldown = [];
+  public $cost = [];
 
-  private $cfg;
-  private $kits;
+  public $cfg;
+  public $kits;
 
   public function onEnable(){
     $this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
@@ -79,7 +82,7 @@ class Kitpvp extends PluginBase implements Listener {
 
   public function registerCommands(){
     $cmdMap = $this->getServer()->getCommandMap();
-    $cmdMap->register('starts', new StatsCommand($this));
+    $cmdMap->register('stats', new StatsCommand($this));
     if($this->cfg->get('warps-enabled') == true){
       $cmdMap->register('warp', new WarpCommand($this));
       $cmdMap->register('warps', new WarpsCommand($this));
@@ -237,6 +240,16 @@ class Kitpvp extends PluginBase implements Listener {
             }
           }
         }
+
+        if(isset($file[$kitname]['cost']) && $file[$kitname]['cost'] != 0){
+          $cost = (int)$file[$kitname]['cost'];
+          $this->cost[$kitname] = $cost;
+        }
+
+        if(isset($file[$kitname]['cooldown']) && $file[$kitname]['cooldown'] != 0){
+          $cooldown = (int)$file[$kitname]['cooldown'];
+          $this->cooldown[$kitname] = $cooldown;
+        }
       }
     }
   }
@@ -327,6 +340,16 @@ class Kitpvp extends PluginBase implements Listener {
 # ===== ADDING =====
 
   public function addKit($player, $kitname){
+    if(isset($this->cost[$kitname])){
+      $cost = $this->cost[$kitname];
+      if(EconomyAPI::getInstance()->myMoney($player) < $cost){
+        $player->sendMessage("§cYou don't have enough money to purchase this kit. You need $cost$");
+        return null;
+      } else {
+        EconomyAPI::getInstance()->reduceMoney($player, $cost);
+      }
+    }
+
     if(isset($this->items[$kitname])){
       foreach($this->items[$kitname] as $item){
         $player->getInventory()->addItem($item);

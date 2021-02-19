@@ -45,7 +45,16 @@ class StatsCommand extends Command {
             $s->sendMessage('§cThis player doesn\'t have any stats');
           }
         } else {
-          $s->sendMessage('§cPlayer not found');
+          $p = $args[0];
+          if(file_exists($this->plugin->getDataFolder() . 'Stats/' . strtolower($p))){
+            $file = new Config($this->plugin->getDataFolder() . 'Stats/' . strtolower($p));
+            $kills = $file->get('Kills');
+            $deaths = $file->get('Deaths');
+            $msg = str_replace(["{player}", "{kills}", "{deaths}"], [$p, $kills, $deaths], $this->plugin->cfg->get('other-stats-format'));
+            $s->sendMessage($msg);
+          } else {
+            $s->sendMessage('§cPlayer not found');
+          }
         }
       }
     } else {

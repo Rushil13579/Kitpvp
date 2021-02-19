@@ -24,6 +24,8 @@ kit-form-title: "§b=== §3Kits §b ==="
 #   commands:
 #     - "give {player} 1 10" [Use {player} for the player claiming the kit]
 #     - "say Enjoy!"
+#   cooldown: 0
+#   cost: 0 # Set to 0 or leave empty to disable [Must have EconomyAPI installed if value is above 0]
 #
 #   form-name-format: "1st_kitname" # Name of the kit in the form [Only matter if kit-form-support is set to true]
 
@@ -35,6 +37,8 @@ kits:
     effects: # You can disable an option like this
     commands:
       - "msg {player} You have claimed kit testkit"
+    cooldown: 0
+    cost: 0
 
     form-name-format: "§bTestKit"
 
@@ -49,5 +53,7 @@ kits:
       - "SPEED:300:1"
     commands:
       - "msg {player} You have claimed kit pvp"
+    cooldown: 0
+    cost: 100
 
     form-name-format: "§cPVP"

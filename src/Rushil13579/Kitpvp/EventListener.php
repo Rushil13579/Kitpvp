@@ -58,12 +58,12 @@ class EventListener implements Listener {
         $damager = $lastdmg->getDamager();
         if($damager instanceof Living){
           $msg = str_replace(['{player}', '{killer}', '{health}', '{maxhealth}'], [$p->getName(), $damager->getName(), $damager->getHealth(), $damager->getMaxHealth()], $msg);
-          if($damager instanceof Player){
-            $this->plugin->addKill($damager);
-            $this->plugin->addDeath($p);
-          }
         } else {
           $msg = $this->plugin->cfg->get('default-death-msg');
+        }
+        if($damager instanceof Player){
+          $this->plugin->addKill($damager);
+          $this->plugin->addDeath($p);
         }
       }
     } else {
