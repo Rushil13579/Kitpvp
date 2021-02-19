@@ -11,49 +11,29 @@ kit-form-support: true
 # Title of the kit form [Only change if kit-form-support is set to true]
 kit-form-title: "§b=== §3Kits §b ==="
 
-# kits:
-# 1st_kitname:
-#   items:
-#     - "Id:meta:amount:name:enchantment1:level1:enchantment2:level2...." [Only id:meta:amount are compulsory. Set name as DEFAULT for no custom name]
-#     - "310:0:1:DiaHelmet:Protection:1:Unbreaking:10"
-#     - "DIAMOND_CHESTPLATE:0:1:DEFAULT:Unbreaking:10:Protection:2"
-#   effects:
-#     - "effect:duration(in seconds):amplifier"
-#     - "SPEED:60:1"
-#     - "Regeneration:120:2"
-#   commands:
-#     - "give {player} 1 10" [Use {player} for the player claiming the kit]
-#     - "say Enjoy!"
-#   cooldown: 0
-#   cost: 0 # Set to 0 or leave empty to disable [Must have EconomyAPI installed if value is above 0]
-#
-#   form-name-format: "1st_kitname" # Name of the kit in the form [Only matter if kit-form-support is set to true]
-
 kits:
-  testkit:
-    items:
-      - "322:0:8:§cHealer"
-      - "LEATHER_CHESTPLATE:0:1:DEFAULT:Protection:1:Unbreaking:1"
-    effects: # You can disable an option like this
-    commands:
-      - "msg {player} You have claimed kit testkit"
-    cooldown: 0
-    cost: 0
-
-    form-name-format: "§bTestKit"
-
   pvp:
     items:
-      - "STONE_SWORD:0:1"
-      - "LEATHER_HELMET:0:1"
-      - "LEATHER_CHESTPLATE:0:1"
-      - "LEATHER_LEGGINGS:0:1"
-      - "LEATHER_BOOTS:0:1"
+      - "GOLDEN_APPLE:0:3"
+
+    slots:
+      0: "STONE_SWORD:0:1:DEFAULT:Sharpness:1"
+      1: "BOW:0:1"
+      8: "Arrow:0:16"
+
+    helmet: "LEATHER_HELMET:0:1"
+    chestplate: "LEATHER_CHESTPLATE:0:1"
+    leggings: "LEATHER_LEGGINGS:0:1"
+    boots: "LEATHER_BOOTS:0:1"
+
     effects:
       - "SPEED:300:1"
+
     commands:
-      - "msg {player} You have claimed kit pvp"
+      - "msg {player} You have claimed kit PVP"
+
     cooldown: 0
+
     cost: 100
 
-    form-name-format: "§cPVP"
+    form-name-format: "§bPVP: §3100$"

@@ -31,6 +31,8 @@ class Kitpvp extends PluginBase implements Listener {
   public $cps = [];
 
   public $items = [];
+  public $slots = [];
+  public $armor = ['helmet' => null, 'chestplate' => null, 'leggings' => null, 'boots' => null];
   public $effects = [];
   public $commands = [];
   public $cooldown = [];
@@ -232,6 +234,43 @@ class Kitpvp extends PluginBase implements Listener {
           }
         }
 
+        if(isset($file[$kitname]['slots']) && is_array($file[$kitname]['slots'])){
+          foreach($file[$kitname]['slots'] as $key => $itemData){
+            $item = $this->loadItems($itemData);
+            if($item != null){
+              $this->slots[$kitname][$key] = $item;
+            }
+          }
+        }
+
+        if(isset($file[$kitname]['helmet'])){
+          $item = $this->loadItems($file[$kitname]['helmet']);
+          if($item != null){
+            $this->armor[$kitname]['helmet'] = $item;
+          }
+        }
+
+        if(isset($file[$kitname]['chestplate'])){
+          $item = $this->loadItems($file[$kitname]['chestplate']);
+          if($item != null){
+            $this->armor[$kitname]['chestplate'] = $item;
+          }
+        }
+
+        if(isset($file[$kitname]['leggings'])){
+          $item = $this->loadItems($file[$kitname]['leggings']);
+          if($item != null){
+            $this->armor[$kitname]['leggings'] = $item;
+          }
+        }
+
+        if(isset($file[$kitname]['boots'])){
+          $item = $this->loadItems($file[$kitname]['boots']);
+          if($item != null){
+            $this->armor[$kitname]['boots'] = $item;
+          }
+        }
+
         if(isset($file[$kitname]['effects']) && is_array($file[$kitname]['effects'])){
           foreach($file[$kitname]['effects'] as $effectData){
             $effect = $this->loadEffects($effectData);
@@ -350,11 +389,22 @@ class Kitpvp extends PluginBase implements Listener {
       }
     }
 
+    if(isset($this->slots[$kitname])){
+      foreach($this->slots[$kitname] as $slot => $item){
+        $player->getInventory()->setItem($slot, $item);
+      }
+    }
+
     if(isset($this->items[$kitname])){
       foreach($this->items[$kitname] as $item){
         $player->getInventory()->addItem($item);
       }
     }
+
+    $this->armor[$kitname]['helmet'] != null && $player->getArmorInventory()->setHelmet($this->armor[$kitname]['helmet']);
+    $this->armor[$kitname]['chestplate'] != null && $player->getArmorInventory()->setChestplate($this->armor[$kitname]['chestplate']);
+    $this->armor[$kitname]['leggings'] != null && $player->getArmorInventory()->setLeggings($this->armor[$kitname]['leggings']);
+    $this->armor[$kitname]['boots'] != null && $player->getArmorInventory()->setBoots($this->armor[$kitname]['boots']);
 
     if(isset($this->effects[$kitname])){
       foreach($this->effects[$kitname] as $effect){
