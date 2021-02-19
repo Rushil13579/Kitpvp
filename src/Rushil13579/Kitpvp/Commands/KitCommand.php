@@ -26,7 +26,11 @@ class KitCommand extends Command {
           $s->sendMessage('§cThis kit does not exist. Do /kits for a list of all available kits');
         }
       } else {
-        $this->plugin->kitForm($s);
+        if($this->plugin->kits->get('kit-form-support') == true){
+          $this->plugin->kitForm($s);
+        } else {
+          $s->sendMessage('§cUsage: /kit [kitname]');
+        }
       }
     } else {
       $s->sendMessage($this->plugin->cfg->get('not-player-msg'));
