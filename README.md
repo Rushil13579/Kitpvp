@@ -14,6 +14,7 @@ If you find any bugs you can report them here or you can contact me on discord a
 
 - Score tags
 - CPS Counter
+- Spawn Command
 - Warps
 - Fully Configurable join/quit/death messages
 - Fully Configurable kits
