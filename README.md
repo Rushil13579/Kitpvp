@@ -1,13 +1,13 @@
 # Kitpvp By Rushil13579
 
-**Info
+**Info**
 
 Kitpvp is a plugin for pocketmine 3.0.0 and up!
 Its an all in one plugin for any kitpvp server!
 
 It is an easy to run, simple and cool plugin!
 
-**Features:
+**Features:**
 
 - Score tags
 - CPS Counter
