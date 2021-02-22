@@ -34,8 +34,6 @@ class Kitpvp extends PluginBase implements Listener {
   public $slots = [];
   public $armor = ['helmet' => null, 'chestplate' => null, 'leggings' => null, 'boots' => null];
   public $effects = [];
-  public $commands = [];
-  public $cooldown = [];
   public $cost = [];
 
   public $cfg;
@@ -285,11 +283,6 @@ class Kitpvp extends PluginBase implements Listener {
         if(isset($file[$kitname]['cost']) && $file[$kitname]['cost'] != 0){
           $cost = (int)$file[$kitname]['cost'];
           $this->cost[$kitname] = $cost;
-        }
-
-        if(isset($file[$kitname]['cooldown']) && $file[$kitname]['cooldown'] != 0){
-          $cooldown = (int)$file[$kitname]['cooldown'];
-          $this->cooldown[$kitname] = $cooldown;
         }
       }
     }
