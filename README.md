@@ -7,6 +7,9 @@ Its an all in one plugin for any kitpvp server!
 
 It is an easy to run, simple and cool plugin!
 
+Feel free to leave a suggestion or a question here.
+If you find any bugs you can report them here or you can contact me on discord at Rushil#2326
+
 **Features:**
 
 - Score tags
