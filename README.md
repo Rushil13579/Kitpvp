@@ -1,6 +1,6 @@
 # Kitpvp By Rushil13579
 
-**Info**
+**Info:**
 
 Kitpvp is a plugin for pocketmine 3.0.0 and up!
 Its an all in one plugin for any kitpvp server!
@@ -16,15 +16,15 @@ It is an easy to run, simple and cool plugin!
 - Fully Configurable kits
 - World protection
 
-**Dependencies:
+**Dependencies:**
 
 - None
 
-**Optional:
+**Optional:**
 
 - EconomyAPI [Priced kits]
 - FormAPI [FormAPI support for kits]
 
-**Credits:
+**Credits:**
 
 - @JackMD
